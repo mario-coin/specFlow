@@ -37,5 +37,12 @@ namespace Cwi.Treinamento.TesteAutomatizado.SpecFlow.Steps.Commom
 
             Assert.IsTrue(JToken.DeepEquals(JToken.Parse(actualJsonResponse), JToken.Parse(expectedJsonResponse)), $"Conteúdo atual do retorno \n{actualJsonResponse} diferente do esperado \n{expectedJsonResponse}.");
         }
+
+        [Given(@"os registros sejam inseridos na tabela '(.*)' da base de dados")]
+        public async Task DadoOsRegistrosSejamInseridosNaTabelaDaBaseDeDados(string tableName, Table table)
+        {
+            await postgresDatabaseController.InsertInto(tableName, table);
+        }
+
     }
 }

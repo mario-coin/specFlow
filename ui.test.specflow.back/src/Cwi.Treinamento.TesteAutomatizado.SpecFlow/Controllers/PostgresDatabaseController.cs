@@ -66,7 +66,7 @@ namespace Cwi.Treinamento.TesteAutomatizado.SpecFlow.Controllers
 
         private string[] GetFilterConditions(Table table)
         {
-            List<string> filters = new List<string>();
+            var filters = new List<string>();
 
             for (int row = 0; row < table.Rows.Count; row++)
             {
@@ -81,6 +81,41 @@ namespace Cwi.Treinamento.TesteAutomatizado.SpecFlow.Controllers
                 }
 
                 filters.Add($"({string.Join(" AND ", rowConditions)})");
+            }
+
+            return filters.ToArray();
+        }
+    
+        public async Task InsertInto(string tableName, Table table)
+        {
+            var insertColumns = string.Join(',', GetColumnsForInsert(table));
+            var insertValues = string.Join(',', GetInsertValues(table));
+
+            var query = $"INSERT INTO {tableName} ({insertColumns }) VALUES {insertValues}";
+
+            await connection.QueryAsync(query);
+        }
+
+        private string[] GetColumnsForInsert(Table table)
+        {
+            return table.Header.ToArray();
+        }
+
+        private string[] GetInsertValues(Table table)
+        {
+            var filters = new List<string>();
+
+            for (int row = 0; row < table.Rows.Count; row++)
+            {
+                var rowConditions = new List<string>();
+
+                for (int header = 0; header < table.Header.Count; header++)
+                {
+                    string value = table.Rows[row][header];
+                    rowConditions.Add(value);
+                }
+
+                filters.Add($"({string.Join(',', rowConditions)})");
             }
 
             return filters.ToArray();

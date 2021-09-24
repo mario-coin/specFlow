@@ -16,5 +16,5 @@ Cenário: Criação de funcionário com sucesso
 		| 1  | '<Name>' | 'funcionario1@empresa.com' | True   |
 
 	Exemplos:
-		| Name            |
+		| Name          |
 		| Funcionário 2 |

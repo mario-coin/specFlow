@@ -6,7 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
-namespace Cwi.Treinamento.TesteAutomatizado.SpecFlow.Steps.Employee
+namespace Cwi.Treinamento.TesteAutomatizado.SpecFlow.Steps.Employees
 {
     [Binding]
     [Scope(Tag = "CreateEmployee")]

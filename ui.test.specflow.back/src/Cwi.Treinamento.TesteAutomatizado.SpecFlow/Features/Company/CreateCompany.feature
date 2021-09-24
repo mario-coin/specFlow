@@ -17,5 +17,5 @@ Cenário: Criação de empresa com sucesso
 		| 1  | '<Name>' | '001' | True   | 5                  |
 
 	Exemplos:
-		| Name        |
+		| Name      |
 		| Empresa 1 |

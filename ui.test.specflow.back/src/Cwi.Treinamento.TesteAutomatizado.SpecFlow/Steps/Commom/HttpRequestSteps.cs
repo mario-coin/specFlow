@@ -20,7 +20,6 @@ namespace Cwi.Treinamento.TesteAutomatizado.SpecFlow.Steps.Commom
             await httpRequestController.SendAsync(endpoint, httpMethodName);
         }
 
-
         [Given(@"seja feita uma chamada do tipo '(.*)' para o endpoint '(.*)' com o corpo da requisição")]
         public async Task DadoSejaFeitaUmaChamadaDoTipoParaOEndpointComOCorpoDaRequisicao(string httpMethodName, string endpoint, string body)
         {
